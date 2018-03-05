@@ -1,4 +1,8 @@
+bin/
+
+*.jpg
 *.txt
+*.csv
 
 # Compiled class file
 *.class

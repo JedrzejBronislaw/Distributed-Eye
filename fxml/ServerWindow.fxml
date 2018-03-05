@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ServerWindowController">
+	<children>
+		<HBox>
+		<children>
+	<ScrollPane prefWidth="600" prefHeight="600" >
+	<content>
+		<VBox>
+		<children>
+			<VBox>
+			<children>
+				<Button onAction="#showImage" text="Show Image"/>
+				<TextField text="200" fx:id="widthImage"/>
+				<Button onAction="#histogram" text="Histogram"/>
+				<HBox>
+				<children>
+					<ImageView preserveRatio="true" fitWidth="200" fx:id="imagePane"/>
+					<ImageView preserveRatio="true" fitWidth="200" fx:id="greyImagePane"/>
+				</children>
+				</HBox>
+			</children>
+			</VBox>
+
+			<AnchorPane fx:id="histogramPane"/>
+
+			<HBox>
+			<children>
+				<VBox>
+				<children>
+					<Button onAction="#showCluster" text="Show Group"/>
+					<Label fx:id="groupNumber"/>
+					<Label fx:id="groupRange"/>
+					<ImageView preserveRatio="true" fitWidth="200" fx:id="groupImage"/>
+				</children>
+				</VBox>
+
+				<VBox fx:id="clusterButtonsVBox">
+				</VBox>
+			</children>
+			</HBox>
+		</children>
+		</VBox>
+	</content>
+	</ScrollPane>
+
+
+	<ScrollPane prefWidth="600" prefHeight="600" fitToWidth="true">
+	<content>
+		<VBox>
+		<children>
+			<Label text="Line" textAlignment="JUSTIFY"/>
+			<Button onAction="#startLineImage" text="Start"/>
+			<ImageView preserveRatio="true" fitHeight="200" fx:id="lineImage"/>
+			<AnchorPane fx:id="lineChartPane"/>
+			<ImageView preserveRatio="true" fitHeight="200" fx:id="vainPointsImage"/>
+		</children>
+		</VBox>
+	</content>
+	</ScrollPane>
+
+	</children>
+	</HBox>
+	</children>
+</AnchorPane>
+

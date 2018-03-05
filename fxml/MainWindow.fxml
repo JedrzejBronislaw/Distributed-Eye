@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainWindow">
+	<children>
+		<Label fx:id="portLabel" text="Port:" layoutX="5" layoutY="5"/>
+		<TextField fx:id="portText" layoutX="70" layoutY="5">25472</TextField>
+
+		<Label fx:id="ipLabel" layoutX="5" layoutY="35">Adres IP:</Label>
+		<TextField fx:id="ipText" layoutX="70" layoutY="35">127.0.0.1</TextField>
+
+		<Button fx:id="serverButton" text="Serwer" onAction="#openServer" layoutX="5" layoutY="75"/>
+		<Button fx:id="klientButton" text="Klient" onAction="#openClient" layoutX="75" layoutY="75"/>
+	</children>
+</AnchorPane>
+
