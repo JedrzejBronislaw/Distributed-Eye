@@ -14,13 +14,9 @@ import java.util.regex.Pattern;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 
-public class Server1 {
-//	Timer timer;
-//	long timeStart;
-//	long timeStop;
-//	private int timelong = 30;
-
+public class Server {
 	PrintWriter out;
+
 
 	public void startServer(int portNumber){
 //		try (
