@@ -52,11 +52,11 @@ public class ServerWindowController implements Initializable{
 	private int curCluster = -1;
 	private List<Cluster> clusters = new ArrayList<>();
 
-	Server server;
+	Server1 server;
 
 	public void startServer(int portNumber){
 
-		server = new Server();
+		server = new Server1();
 		server.startServer(portNumber);
 	}
 	@FXML

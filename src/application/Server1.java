@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 
-public class Server {
+public class Server1 {
 //	Timer timer;
 //	long timeStart;
 //	long timeStop;
