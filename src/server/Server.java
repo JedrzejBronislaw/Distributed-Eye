@@ -1,15 +1,16 @@
 package server;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 
 import lombok.Getter;
 
 public class Server {
-	private List<RemoteClient> clientList = new ArrayList<>();
+
+	@Getter
+	private RemoteClientsManager clientManager = new RemoteClientsManager();
 	private Thread thread;
 	@Getter
 	private int portNumber;
@@ -28,18 +29,20 @@ public class Server {
 				Socket clientSocket = serverSocket.accept();
 				System.out.println("serwer polaczony z klientem");
 
-				RemoteClient newClient = new RemoteClient(clientSocket);
-				clientList.add(newClient);
+				clientManager.add(clientSocket);
 
-				System.out.println("liczba klientow: " + clientList.size());
+				System.out.println("liczba klientow: " + clientManager.numberOfClients());
 			}
+		} catch (BindException e) {
+			//TODO
+			System.out.println("The port is unavailable.");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void sendMessage(int clientIndex, String message) {
-		clientList.get(clientIndex).sendMessage(message);
+		clientManager.sendMessage(clientIndex,message);
 	}
 
 }

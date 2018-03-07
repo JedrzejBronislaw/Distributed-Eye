@@ -61,6 +61,7 @@ public class ServerWindowController implements Initializable{
 	public void startServer(int portNumber){
 
 		server = new Server();
+		server.getClientManager().setNewNumberOfClientsEvent((n)->System.out.println("Current number of clients: " + n));
 		server.startServer(portNumber);
 	}
 	@FXML
