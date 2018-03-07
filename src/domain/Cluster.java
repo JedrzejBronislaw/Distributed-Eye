@@ -1,6 +1,5 @@
-package application;
+package domain;
 
-import javafx.scene.control.SplitPane.Divider;
 import javafx.scene.image.Image;
 
 public class Cluster {

@@ -1,4 +1,4 @@
-package application;
+package domain;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -7,16 +7,15 @@ import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
+import lombok.Getter;
+import tools.Tools;
 
 public class VainPoints {
 
+	@Getter
 	private Image image;
 	private List<Point> vainPoints = new ArrayList<>();
 	final int threshold = -15;
-
-	public Image getImage() {
-		return image;
-	}
 
 	public VainPoints(Image image) {
 		this.image = image;

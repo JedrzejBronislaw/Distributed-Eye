@@ -1,6 +1,5 @@
-package application;
+package server;
 
-import java.awt.EventQueue;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,6 +12,8 @@ public class RemoteClient {
 	private PrintWriter out;
 	private BufferedReader in;
 
+	private Thread listenThread;
+
 	public RemoteClient(Socket socket) {
 		this.socket = socket;
 
@@ -23,7 +24,8 @@ public class RemoteClient {
 			e.printStackTrace();
 		}
 
-		EventQueue.invokeLater(()->listen());
+		listenThread = new Thread(() -> listen());
+		listenThread.start();
 	}
 
 	private void listen() {
@@ -113,21 +115,19 @@ public class RemoteClient {
 		}
 	}
 
-	// @FXML
-	public void sendMessage(String m) {
-		String fromUser;
-
-		fromUser = m;// textArea.getText();//stdIn.readLine();
-		// String[] lines =fromUser.split(Pattern.quote("\n"));
-		out.println(fromUser);
-		// if (fromUser != null) {
-		// out.println("c|");
-		// for(String l : lines)
-		// {
-		// System.out.println("Client: " + l);
-		// out.println("m|"+l);
-		// }
-		// }
+	public synchronized void sendMessage(String message) {
+		out.println(message);
 	}
 
+	public boolean disconnect() {
+		try {
+			if (!socket.isClosed())
+				socket.close();
+			else
+				return false;
+		} catch (IOException e) {
+			return false;
+		}
+		return true;
+	}
 }
