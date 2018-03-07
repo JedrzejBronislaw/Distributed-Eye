@@ -374,7 +374,7 @@ public class ServerWindowController implements Initializable{
 
 		showLineChart(line, selX);
 
-		server.sendMessage("vains");
+		server.sendMessage(0,"vains");
 	}
 
 	private void showLineChart(List<Integer> line, int selX) {
