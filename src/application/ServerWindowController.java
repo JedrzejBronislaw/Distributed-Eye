@@ -28,6 +28,8 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import protocol.Message;
+import protocol.RemoteFunctionsManager.Name;
 import server.Server;
 import tools.Tools;
 
@@ -379,7 +381,8 @@ public class ServerWindowController implements Initializable{
 
 		showLineChart(line, selX);
 
-		server.sendMessage(0,"vains");
+		server.sendMessage(0,Message.createAnswer(Name.ClientName, "vains"));
+//		server.sendMessage(0,"vains");
 	}
 
 	private void showLineChart(List<Integer> line, int selX) {

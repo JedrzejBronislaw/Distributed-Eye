@@ -5,6 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.function.Consumer;
+
+import lombok.Setter;
+import protocol.Message;
+import protocol.Message.Type;
+import protocol.RemoteFunctionsManager.Name;
 
 public class RemoteClient {
 
@@ -13,6 +19,11 @@ public class RemoteClient {
 	private BufferedReader in;
 
 	private Thread listenThread;
+
+	@Setter
+	private Consumer<String> answerEvent = null;
+	@Setter
+	private Consumer<String> clientNameChangeEvent = null;
 
 	public RemoteClient(Socket socket) {
 		this.socket = socket;
@@ -30,10 +41,30 @@ public class RemoteClient {
 
 	private void listen() {
 		String input;
+//		String messageType;
+		Message message;
 
 		try {
 
 			while ((input = in.readLine()) != null) {
+
+				try{
+					message = new Message(input);
+				} catch (IllegalArgumentException e)
+				{
+					System.out.println("wrong message: \"" + input + "\"");
+					continue;
+				}
+//				messageType = ""; //TODO
+
+				if(answerEvent != null)
+					answerEvent.accept(message.getType().toString());
+
+//				message.generateAnswer("content"); //TODO
+
+				if (message.getType() == Type.Answer && message.getName() == Name.ClientName)
+					if (clientNameChangeEvent != null)
+						clientNameChangeEvent.accept(message.getContent());
 				// final String input = inputLine.replaceAll(Pattern.quote("$"),
 				// "\n");
 
@@ -115,9 +146,9 @@ public class RemoteClient {
 		}
 	}
 
-	public synchronized void sendMessage(String message) {
-		out.println(message);
-	}
+//	public synchronized void sendMessage(String message) {
+//		out.println(message);
+//	}
 
 	public boolean disconnect() {
 		try {
@@ -129,5 +160,9 @@ public class RemoteClient {
 			return false;
 		}
 		return true;
+	}
+
+	public void sendMessage(Message message) {
+		out.println(message);
 	}
 }
