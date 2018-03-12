@@ -48,6 +48,7 @@ public class Add extends RemoteFunction{
 		return new Add(input);
 	}
 
+	@Override
 	public boolean fit(Message message){
 		System.out.println("fit ("+message.getName()+", "+name+"): " + message.getName().getText().equals(name));
 		return message.getName().getText().equals(name);

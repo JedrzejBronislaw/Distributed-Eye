@@ -35,6 +35,7 @@ public class RemoteClient {
 			e.printStackTrace();
 		}
 
+		sendMessage(Message.createRequest(Name.ClientName, ""));
 		listenThread = new Thread(() -> listen());
 		listenThread.start();
 	}

@@ -41,8 +41,8 @@ public class Client {
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-			Message message = Message.createAnswer(Name.ClientName, "client 101");
-			send(message);
+//			Message message = Message.createAnswer(Name.ClientName, "client 101");
+//			send(message);
 
 		} catch (IOException e) {
 			e.printStackTrace();

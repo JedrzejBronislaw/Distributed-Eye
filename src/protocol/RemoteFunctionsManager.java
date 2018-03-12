@@ -52,6 +52,7 @@ public class RemoteFunctionsManager {
 		RemoteFunctionsManager manager = new RemoteFunctionsManager();
 
 		manager.add(new Add(""));
+		manager.add(new ClientName(""));
 
 		return manager;
 	}
