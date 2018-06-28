@@ -7,14 +7,19 @@
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainWindow">
 	<children>
-		<Label fx:id="portLabel" text="Port:" layoutX="5" layoutY="5"/>
-		<TextField fx:id="portText" layoutX="70" layoutY="5">25472</TextField>
+		<AnchorPane>
+			<children>
+				<Label text="Distributed Eye"/>
+			</children>
+		</AnchorPane>
+		<Label fx:id="portLabel" text="Port:" layoutX="5" layoutY="25"/>
+		<TextField fx:id="portText" layoutX="70" layoutY="25">25472</TextField>
 
-		<Label fx:id="ipLabel" layoutX="5" layoutY="35">Adres IP:</Label>
-		<TextField fx:id="ipText" layoutX="70" layoutY="35">127.0.0.1</TextField>
+		<Label fx:id="ipLabel" layoutX="5" layoutY="55">Adres IP:</Label>
+		<TextField fx:id="ipText" layoutX="70" layoutY="55">127.0.0.1</TextField>
 
-		<Button fx:id="serverButton" text="Serwer" onAction="#openServer" layoutX="5" layoutY="75"/>
-		<Button fx:id="klientButton" text="Klient" onAction="#openClient" layoutX="75" layoutY="75"/>
+		<Button fx:id="serverButton" text="Serwer" onAction="#openServer" layoutX="5" layoutY="85"/>
+		<Button fx:id="klientButton" text="Klient" onAction="#openClient" layoutX="75" layoutY="85"/>
 	</children>
 </AnchorPane>
 
