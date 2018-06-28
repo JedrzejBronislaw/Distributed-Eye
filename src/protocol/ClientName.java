@@ -18,7 +18,7 @@ public class ClientName extends RemoteFunction {
 	@Override
 	protected void execute() {
 		Random r = new Random();
-		clientName = "client " + r.nextInt(100);
+		clientName = "client " + r.nextInt(100);	//TODO polaczyc z prawdziwa nazwa
 	}
 
 	@Override
